@@ -35,7 +35,7 @@ useEffect(() => {
     .attr("class", "x label")
     .attr("text-anchor", "end")
     .attr("x", width/2+25)
-    .attr("y", height+30)
+    .attr("y", height+40)
     .text("Race");
 
     svg.append("text")
@@ -48,19 +48,50 @@ useEffect(() => {
     .text("Number of Shootings");
     //fetch data
     
-    svg.append("text").attr("x", 240).attr("y", 30).text("A - Asian").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 240).attr("y", 50).text("W - White").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 240).attr("y", 70).text("H - Hispanic").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 240).attr("y", 90).text("B - Black").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 240).attr("y", 110).text("O - Others").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 240).attr("y", 130).text("N - Native Americans").style("font-size", "15px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 240).attr("y", 30).text("A - Asian").style("font-size", "15px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 240).attr("y", 50).text("W - White").style("font-size", "15px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 240).attr("y", 70).text("H - Hispanic").style("font-size", "15px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 240).attr("y", 90).text("B - Black").style("font-size", "15px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 240).attr("y", 110).text("O - Others").style("font-size", "15px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 240).attr("y", 130).text("N - Native Americans").style("font-size", "15px").attr("alignment-baseline","middle")
 
-    const data = props.Data
+    var data = props.Data
+    for(var i=0;i<data.length;i++){
+      var temp = data[i].race;
+      switch(temp) {
+        case "A":
+          temp = "Asian"
+          break;
+        case "W":
+          temp =  "White"
+          break;
+        case "H":
+          temp =  "Hispanic"
+          break;
+        case "B":
+          temp =  "Black"
+          break;
+        case "O":
+          temp =  "Others"
+          break;
+        case "N":
+          temp =  "Natives"
+          break;
+        default:
+          break;
+    }
+    data[i].race = temp
+
+  }
+
+
     // const d = d3.csv("preprocessed.csv", newdata => {
     // X axis
     var x = d3.scaleBand()
     .range([ 0, width ])
-    .domain(data.map(function(d) { return d.race; }))
+    .domain(data.map(function(d) { 
+
+      return d.race; }))
     .padding(0.2);
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -71,7 +102,7 @@ useEffect(() => {
   
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, data.length+100])
+    .domain([0, data.length+10])
     .range([ height, 0]);
     svg.append("g")
     .call(d3.axisLeft(y));
@@ -104,7 +135,8 @@ useEffect(() => {
       .attr("height", function(d) { return height - y(d.count); })
       .attr("fill", "#937DC2")
 
-  }, [props.Data, svgRef.current]); // redraw chart if data changes
+  
+    }, [props.Data]); // redraw chart if data changes
 
   return <svg className="GenderBar" ref={svgRef} />;
 };

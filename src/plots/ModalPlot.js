@@ -9,9 +9,9 @@ const ModalPlot = (props) => {
 
 //Modal Plot for Gender
 useEffect(() => {
-    var margin = {top: 25, right: 5, bottom: 30, left: 60},
-    width = 200 - margin.left - margin.right,
-    height = 200 - margin.top - margin.bottom;
+  var margin = {top: 25, right: 5, bottom: 60, left: 60},
+    width = 250 - margin.left - margin.right,
+    height = 260 - margin.top - margin.bottom;
     // SELECTIONS
     const svg = d3
       .select(svgRef.current)
@@ -35,7 +35,7 @@ useEffect(() => {
     .attr("class", "x label")
     .attr("text-anchor", "end")
     .attr("x", width/2)
-    .attr("y", height+30)
+    .attr("y", height+45)
     .text("Gender")
     .style("font-size", "10px");
 
@@ -103,13 +103,13 @@ useEffect(() => {
     .attr("y", function(d) { return y(d.count); })
     .attr("width", x.bandwidth())
     .attr("height", function(d) { return height - y(d.count); })
-    .attr("fill", "#69b3a2")
-  }, [props.data, svgRef.current]); // redraw chart if data changes
+    .attr("fill", "#9ADCFF")
+  }, [props.data]); // redraw chart if data changes
 //Modal Plot for Race
 useEffect(() => {
-  var margin = {top: 25, right: 5, bottom: 30, left: 60},
+  var margin = {top: 25, right: 5, bottom: 60, left: 60},
     width = 250 - margin.left - margin.right,
-    height = 200 - margin.top - margin.bottom;
+    height = 260 - margin.top - margin.bottom;
     // dimensions.containerWidth = dimensions.width - dimensions.margins * 2;
     // dimensions.containerHeight = dimensions.height - dimensions.margins * 2;
 
@@ -136,7 +136,7 @@ useEffect(() => {
     .attr("class", "x label")
     .attr("text-anchor", "end")
     .attr("x", width/2)
-    .attr("y", height+30)
+    .attr("y", height+45)
     .text("Race")
     .style("font-size", "10px");
 
@@ -151,12 +151,12 @@ useEffect(() => {
     .style("font-size", "10px");
     //fetch data
     
-    svg.append("text").attr("x", 120).attr("y", 0).text("A - Asian").style("font-size", "10px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 120).attr("y", 10).text("W - White").style("font-size", "10px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 120).attr("y", 20).text("H - Hispanic").style("font-size", "10px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 120).attr("y", 30).text("B - Black").style("font-size", "10px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 120).attr("y", 40).text("O - Others").style("font-size", "10px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 120).attr("y", 50).text("N - Native Americans").style("font-size", "10px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 120).attr("y", 0).text("A - Asian").style("font-size", "10px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 120).attr("y", 10).text("W - White").style("font-size", "10px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 120).attr("y", 20).text("H - Hispanic").style("font-size", "10px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 120).attr("y", 30).text("B - Black").style("font-size", "10px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 120).attr("y", 40).text("O - Others").style("font-size", "10px").attr("alignment-baseline","middle")
+    // svg.append("text").attr("x", 120).attr("y", 50).text("N - Native Americans").style("font-size", "10px").attr("alignment-baseline","middle")
 
     const data = props.data
     // const d = d3.csv("preprocessed.csv", newdata => {
@@ -205,14 +205,14 @@ useEffect(() => {
       .attr("y", function(d) { return y(d.count); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.count); })
-      .attr("fill", "#69b3a2")
+      .attr("fill", "#937DC2")
 
-  }, [props.data, svgRef2.current]); // redraw chart if data changes
+  }, [props.data]); // redraw chart if data changes
 //Modal Plot for Age
 useEffect(() => {
-  var margin = {top: 25, right: 5, bottom: 30, left: 60},
+  var margin = {top: 25, right: 5, bottom: 60, left: 60},
     width = 250 - margin.left - margin.right,
-    height = 200 - margin.top - margin.bottom;
+    height = 260 - margin.top - margin.bottom;
     // dimensions.containerWidth = dimensions.width - dimensions.margins * 2;
     // dimensions.containerHeight = dimensions.height - dimensions.margins * 2;
 
@@ -239,7 +239,7 @@ useEffect(() => {
     .attr("class", "x label")
     .attr("text-anchor", "end")
     .attr("x", width/2)
-    .attr("y", height+30)
+    .attr("y", height+45)
     .text("Age")
     .style("font-size", "10px");
 
@@ -327,9 +327,9 @@ useEffect(() => {
         if(d===undefined)
           return; 
         return height - y(d['value']); })
-      .attr("fill", "#69b3a2")
+      .attr("fill", "#FF8AAE")
 
-  }, [props.data, svgRef3.current]); // redraw chart if data changes
+  }, [props.data]); // redraw chart if data changes
 
 
   return (

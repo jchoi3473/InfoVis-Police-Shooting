@@ -34,7 +34,7 @@ useEffect(() => {
     .attr("class", "x label")
     .attr("text-anchor", "end")
     .attr("x", width/2+25)
-    .attr("y", height+30)
+    .attr("y", height+36)
     .text("Age");
 
     svg.append("text")
@@ -48,7 +48,7 @@ useEffect(() => {
     //fetch data
     
     svg.append("text").attr("x", 300).attr("y", 20).text("10: Age 0-10").style("font-size", "10px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 300).attr("y", 35).text("20: Age 10-10").style("font-size", "10px").attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 300).attr("y", 35).text("20: Age 10-20").style("font-size", "10px").attr("alignment-baseline","middle")
   svg.append("text").attr("x", 300).attr("y", 50).text("30: Age 20-30").style("font-size", "10px").attr("alignment-baseline","middle")
   svg.append("text").attr("x", 300).attr("y", 65).text("40: Age 30-40").style("font-size", "10px").attr("alignment-baseline","middle")
   svg.append("text").attr("x", 300).attr("y", 80).text("50: Age 40-50").style("font-size", "10px").attr("alignment-baseline","middle")
@@ -121,7 +121,7 @@ useEffect(() => {
         return;return height - y(d['value']); })
       .attr("fill", "#FF8AAE")
 
-  }, [props.Data, svgRef.current]); // redraw chart if data changes
+  }, [props.Data]); // redraw chart if data changes
 
   return <svg className="GenderBar" ref={svgRef} />;
 };

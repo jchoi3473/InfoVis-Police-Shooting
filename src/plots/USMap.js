@@ -6,7 +6,6 @@ import * as topojson from "topojson"
 import './plots.css';
 import CloseIcon from '@mui/icons-material/Close';
 
-import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import ModalPlot from './ModalPlot'
 // import d3-fetch from 'd'
@@ -50,7 +49,6 @@ const USMap = (props) => {
   var g = svg.append("g")
       .style("stroke-width", "1.5px");
   
-  var totalNumber = props.data.length;
   var states = {}
 
   for(var i=0;i<props.data.length;i++){
@@ -76,16 +74,18 @@ const USMap = (props) => {
   var case3 = maxNum/8;
   var case4 = maxNum/16;
 
+
+
   g.selectAll("path")
       .data(topojson.feature(us, us.objects.states).features)
-    .enter().append("path")
+      .enter().append("path")
       .attr("d", path)
       .attr("class", "feature")
       .style("fill", function(d) {
         // console.log(states[d.properties.name])
         var freqNum = states[d.properties.name]?states[d.properties.name].totalNum:0;
         
-        if(freqNum==0){
+        if(freqNum===0){
           return "#ccc";
         }
         if(freqNum>=case1){
@@ -104,7 +104,19 @@ const USMap = (props) => {
         }
       })
       .style("opacity", 0.85)
-      .on("click", clicked);
+      .on("click", clicked)
+      .on("mouseenter", function(d) { setState(d.srcElement.__data__.properties) });
+
+
+
+
+      // .on('mouseover', function(d, i) {
+
+      //   var currentState = this;
+      //   console.log(this)
+      //   console.log(d3.select(this))
+      // })
+      ;
 
 
     g.append("path")
@@ -205,12 +217,14 @@ const USMap = (props) => {
       setState({});
       }
       
-    }, [props.us]); // redraw chart if data changes
+    }, [data, props.data.length, props.us, us]); // redraw chart if data changes
 
   return (
     <>
-    {currState?<div>{currState.name}</div>:<div></div>}
+    <div className="MapVertical">
+    {currState?<div className="StateName">{currState.name}</div>:<div></div>}
     <svg className = "USMap" ref={svgRef}/>
+    </div>
       <Modal
         className ="ModalClass"
         open={open}
@@ -218,8 +232,8 @@ const USMap = (props) => {
       >
         <div className="Modal-Content">
           <div className="Modal-Header">
-          <div>{currState.name}</div>
-          <CloseIcon classes={"Close"} style={{cursor:"pointer"}}onClick ={handleClose}/>
+          <div style={{fontSize:'25px'}}>{currState.name}</div>
+          <CloseIcon style={{cursor:"pointer"}}onClick ={handleClose}/>
           </div>
           <ModalPlot data = {stateData}/>
         </div>

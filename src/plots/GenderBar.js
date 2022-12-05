@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import preprocessedData from './../data/preprocessed.csv'
 import './plots.css';
 // import d3-fetch from 'd'
 const GenderBar = (props) => {
@@ -111,7 +110,7 @@ useEffect(() => {
 
     // // Draw Circle
     // container.append("circle").attr("r", 25);
-  }, [props.Data, svgRef.current]); // redraw chart if data changes
+  }, [props.Data]); // redraw chart if data changes
 
   return <svg className="GenderBar" ref={svgRef} />;
 };
