@@ -1,0 +1,66 @@
+.GenderBar{
+  width: 500px;
+    height: 370px;
+}
+.BarModal{
+  width: 300px;
+  height: 300px;
+}
+.USMap{
+    width: 1050px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.background {
+    fill: none;
+    pointer-events: all;
+  }
+  
+  .feature {
+    fill: #ccc;
+    cursor: pointer;
+  }
+  
+  .feature.active {
+    fill: orange !important;
+  }
+  
+  .mesh {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ModalClass{
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 900; */
+    z-index: 100;
+  }
+
+  .MuiBackdrop-root{
+    background-color: transparent !important;
+  }
+
+  .Modal-Content{
+    width: 900px;
+    height: 600px;
+    background-color: lightgray;
+    opacity: 0.95;
+  }
+
+.Modal-Header{
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
