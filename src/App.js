@@ -11,6 +11,7 @@ import YearSlider from './components/YearSlider';
 import GenderCheckBox from './components/GenderCheckBox';
 import RaceCheckBox from './components/RaceCheckBox';
 import {ColorRing} from 'react-loader-spinner'
+import LinkIcon from '@mui/icons-material/Link';
 
 // import fs from 'fs';
 // let data = datafile
@@ -116,6 +117,12 @@ function App() {
       <div className='Title'>
       Visualizing Police Shootings
       </div>
+      <div className='DatasetContainer'>
+      <div style={{fontSize:"20px", marginRight:"5px"}}>
+        {"Original Dataset "} 
+        </div>
+        <LinkIcon fontSize ={"large"} style={{cursor:"pointer"}} onClick={() => window.open("https://www.kaggle.com/datasets/ramjasmaurya/us-police-shootings-from-20152022")}/>
+        </div>
              {/* <LineChart Data={data2} /> */}
              <div className='Container'>
               <div className='BarChart-Container'>
