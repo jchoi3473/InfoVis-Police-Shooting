@@ -6,7 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 export default function RaceCheckBox(props) {
 
-  const { A,W,H,B,O,N } = props.race;
+  const { Asian,White,Hispanic,Black,Others,Natives } = props.race;
 
   return (
       <FormControl sx={{ m: 6 }} component="fieldset" variant="standard" style ={{margin: '0'}}>
@@ -14,35 +14,35 @@ export default function RaceCheckBox(props) {
         <FormGroup>
           <FormControlLabel
             control={
-              <Checkbox checked={A} onChange={props.handleChange} name="A" />
+              <Checkbox checked={Asian} onChange={props.handleChange} name="Asian" />
             }
             label="Asian"
           />
           <FormControlLabel
             control={
-              <Checkbox checked={W} onChange={props.handleChange} name="W" />
+              <Checkbox checked={White} onChange={props.handleChange} name="White" />
             }
             label="White"
           />
           <FormControlLabel
             control={
-              <Checkbox checked={H} onChange={props.handleChange} name="H" />
+              <Checkbox checked={Hispanic} onChange={props.handleChange} name="Hispanic" />
             }
             label="Hispanic"
           />
                     <FormControlLabel
             control={
-              <Checkbox checked={B} onChange={props.handleChange} name="B" />
+              <Checkbox checked={Black} onChange={props.handleChange} name="Black" />
             }
             label="Black"
           />          <FormControlLabel
           control={
-            <Checkbox checked={O} onChange={props.handleChange} name="O" />
+            <Checkbox checked={Others} onChange={props.handleChange} name="Others" />
           }
           label="Others"
 />          <FormControlLabel
         control={
-          <Checkbox checked={N} onChange={props.handleChange} name="N" />
+          <Checkbox checked={Natives} onChange={props.handleChange} name="Natives" />
         }
         label="Native Americans"
       />  

@@ -24,12 +24,12 @@ function App() {
     F: true,
   });
   const [raceBox, setRaceBox] = useState({
-    A: true,
-    W: true,
-    H: true,
-    B: true,
-    O: true,
-    N: true
+    Asian: true,
+    White: true,
+    Hispanic: true,
+    Black: true,
+    Others: true,
+    Natives: true,
   });
 
   const [count, setCount] = useState(0);
@@ -69,6 +69,7 @@ function App() {
     setLoading(true);
     setSliderValue(newValue);
   }
+
   useEffect(() =>{
     setData(datafile)
     itemLoding()
@@ -78,13 +79,19 @@ function App() {
   useEffect(() =>{
     var tempData = []
     for(var i=0;i<datafile.length;i++){
+      
       if(genderBox[datafile[i].gender]&&raceBox[datafile[i].race]
-        && datafile[i].year>=sliderValue[0] && datafile[i].year <= sliderValue[1]){
+        && (datafile[i].year>=sliderValue[0] && datafile[i].year <= sliderValue[1])){
         tempData.push(datafile[i])
-        
+        // console.log(datafile[i])
         // concat(datafile[i])
       }
     }
+    // console.log(raceBox);
+    // console.log(sliderValue);
+    // console.log(genderBox);
+
+    // console.log(tempData)
     setData(tempData)
     itemLoding()
     setLoading(false);
@@ -119,6 +126,7 @@ function App() {
               <div className='Map-Container'>
                 <USMap data = {data} us = {usData}/>
                 <div className="toolbar">
+                  <div style={{paddingTop:"10px", fontWeight:"bold", marginBottom:"10px", fontSize:"20px"}}>Category Filter</div>
                   <div>
                   <div>Assign Year Range</div>
                   <YearSlider  value = {sliderValue} handleChange={handleSliderChange}/> 

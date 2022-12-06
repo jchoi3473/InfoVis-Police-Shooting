@@ -72,7 +72,6 @@ useEffect(() => {
     });
 
 
-    console.log(countObj)
     // X axis
     var x = d3.scaleBand()
     .range([ 0, width ])

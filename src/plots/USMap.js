@@ -125,7 +125,6 @@ const USMap = (props) => {
       .attr("d", path);
 
 
-
       const container = d3.select(svgRef.current);
       const colourScale = d3
         .scaleSequential(d3.interpolateReds)
@@ -217,12 +216,14 @@ const USMap = (props) => {
       setState({});
       }
       
-    }, [data, props.data.length, props.us, us]); // redraw chart if data changes
+    }, [props.us, svgRef]); // redraw chart if data changes
 
   return (
     <>
     <div className="MapVertical">
-    {currState?<div className="StateName">{currState.name}</div>:<div></div>}
+    <div className='Title' style={{fontSize:"30px"}}>
+      U.S. Police Shooting Frequency Map</div>
+    {currState?<div className="StateName">{currState.name}</div>:<div className="StateName"></div>}
     <svg className = "USMap" ref={svgRef}/>
     </div>
       <Modal

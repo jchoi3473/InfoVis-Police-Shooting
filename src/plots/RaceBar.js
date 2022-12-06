@@ -56,33 +56,6 @@ useEffect(() => {
     // svg.append("text").attr("x", 240).attr("y", 130).text("N - Native Americans").style("font-size", "15px").attr("alignment-baseline","middle")
 
     var data = props.Data
-    for(var i=0;i<data.length;i++){
-      var temp = data[i].race;
-      switch(temp) {
-        case "A":
-          temp = "Asian"
-          break;
-        case "W":
-          temp =  "White"
-          break;
-        case "H":
-          temp =  "Hispanic"
-          break;
-        case "B":
-          temp =  "Black"
-          break;
-        case "O":
-          temp =  "Others"
-          break;
-        case "N":
-          temp =  "Natives"
-          break;
-        default:
-          break;
-    }
-    data[i].race = temp
-
-  }
 
 
     // const d = d3.csv("preprocessed.csv", newdata => {
